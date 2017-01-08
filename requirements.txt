@@ -1,0 +1,2 @@
+socketIO_client==0.7.1
+hcsr04sensor==1.5.1
