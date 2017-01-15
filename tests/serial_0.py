@@ -41,7 +41,7 @@ try:
 
         if data[1] == b'\x50':
 
-            print('Time is ' + repr(data[3]))
+            print(convert(data[7]))
 
         '''
         if data[1] == b'\x54':
