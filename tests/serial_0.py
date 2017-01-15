@@ -54,23 +54,7 @@ try:
 
         #Angle
         
-        elif data[1] == b'\x53':
-            print(data[2:4])
-            # exit()
-
-            x = convert(data[2:4]) / 32768 * 180
-            y = convert(data[4:6]) / 32768 * 180
-            z = convert(data[6:8]) / 32768 * 180
-
-            print("Angle output:{}, {}, {}".format(x, y, z))
-
-        elif data[1] == b'\x51':
-            x = convert(data[2:4]) / 32768 * 16
-            y = convert(data[4:6]) / 32768 * 16
-            z = convert(data[6:8]) / 32768 * 16
-
-            print("Acceleration output: {}, {}, {}".format(x, y, z))
-        '''
+           '''
 
         # print("----", data[0], data[1])
 
