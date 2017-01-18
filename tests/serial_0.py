@@ -43,6 +43,12 @@ try:
 
             print(convert(data[7]))
 
+
+        # Angle Output.
+        if (data[1] == b'\x53'):
+
+            pass
+
         '''
         if data[1] == b'\x54':
 
