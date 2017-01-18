@@ -21,7 +21,7 @@ import serial
 sensor = serial.Serial(port='/dev/ttyAMA0', baudrate='9600', timeout=1)
 
 def convert(hexVal):
-    return int(codecs.encode(hexVal, 'hex'), 16)
+    return codecs.encode(hexVal, 'hex')
 
 while True:
     data = sensor.read(size=1)
@@ -41,28 +41,16 @@ try:
 
         if data[1] == b'\x50':
 
-            print(convert(data[7]))
-
+          # print(convert(data[7]))
+          pass
 
         # Angle Output.
         if (data[1] == b'\x53'):
+          hexVal = []
+          for i in range(11):
+            hexVal.append(convert(data[i]))
 
-            pass
-
-        '''
-        if data[1] == b'\x54':
-
-            x = convert(data[2:4])
-            y = convert(data[4:6])
-            z = convert(data[6:8])
-
-            # print("Magnetic output:{}, {}, {}".format(x, y, z))
-
-        #Angle
-        
-           '''
-
-        # print("----", data[0], data[1])
+          print(hexVal)
 
 except KeyboardInterrupt:
     sensor.close()
