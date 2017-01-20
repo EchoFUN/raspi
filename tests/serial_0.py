@@ -20,8 +20,10 @@ import serial
 
 sensor = serial.Serial(port='/dev/ttyAMA0', baudrate='9600', timeout=1)
 
+
 def convert(hexVal):
     return codecs.encode(hexVal, 'hex')
+
 
 while True:
     data = sensor.read(size=1)
@@ -41,16 +43,25 @@ try:
 
         if data[1] == b'\x50':
 
-          # print(convert(data[7]))
-          pass
+            # print(convert(data[7]))
+            pass
 
         # Angle Output.
         if (data[1] == b'\x53'):
-          hexVal = []
-          for i in range(11):
-            hexVal.append(convert(data[i]))
+            hexVal = []
+            for i in range(11):
+                hexVal.append(convert(data[i]))
 
-          print(hexVal)
+                
+            ''' java code.
+            fData[6] = ((((short) packBuffer[1]) << 8) | ((short) packBuffer[0] & 0xff)) / 32768.0f * 180;
+            fData[7] = ((((short) packBuffer[3]) << 8) | ((short) packBuffer[2] & 0xff)) / 32768.0f * 180;
+            fData[8] = ((((short) packBuffer[5]) << 8) | ((short) packBuffer[4] & 0xff)) / 32768.0f * 180;
+            fData[16] = ((((short) packBuffer[7]) << 8) | ((short) packBuffer[6] & 0xff)) / 100.0f;
+            '''
+
+            ax = ((hexVal[3] << 8) | (hexVal[2] & 0xff)) / 32768 * 180
+            print(ax)
 
 except KeyboardInterrupt:
     sensor.close()
