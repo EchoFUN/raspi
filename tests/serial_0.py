@@ -51,8 +51,6 @@ try:
             hexVal = []
             for i in range(11):
                 hexVal.append(convert(data[i]))
-
-                
             ''' java code.
             fData[6] = ((((short) packBuffer[1]) << 8) | ((short) packBuffer[0] & 0xff)) / 32768.0f * 180;
             fData[7] = ((((short) packBuffer[3]) << 8) | ((short) packBuffer[2] & 0xff)) / 32768.0f * 180;
