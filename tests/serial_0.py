@@ -10,6 +10,7 @@
 #
 #
 #
+from __future__ import division
 
 import os
 import sys
@@ -22,7 +23,7 @@ sensor = serial.Serial(port='/dev/ttyAMA0', baudrate='9600', timeout=1)
 
 
 def convert(hexVal):
-    return codecs.encode(hexVal, 'hex')
+    return int(codecs.encode(hexVal, 'hex'), 16)
 
 
 while True:
@@ -51,15 +52,12 @@ try:
             hexVal = []
             for i in range(11):
                 hexVal.append(convert(data[i]))
-            ''' java code.
-            fData[6] = ((((short) packBuffer[1]) << 8) | ((short) packBuffer[0] & 0xff)) / 32768.0f * 180;
-            fData[7] = ((((short) packBuffer[3]) << 8) | ((short) packBuffer[2] & 0xff)) / 32768.0f * 180;
-            fData[8] = ((((short) packBuffer[5]) << 8) | ((short) packBuffer[4] & 0xff)) / 32768.0f * 180;
-            fData[16] = ((((short) packBuffer[7]) << 8) | ((short) packBuffer[6] & 0xff)) / 100.0f;
-            '''
 
             ax = ((hexVal[3] << 8) | (hexVal[2] & 0xff)) / 32768 * 180
-            print(ax)
+            ay = ((hexVal[5] << 8) | (hexVal[4] & 0xff)) / 32768 * 180
+            az = ((hexVal[7] << 8) | (hexVal[6] & 0xff)) / 32768 * 180
+
+            print(round(ax, 3), round(ay, 3), round(az, 3))
 
 except KeyboardInterrupt:
     sensor.close()
