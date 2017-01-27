@@ -48,17 +48,25 @@ try:
             # print(convert(data[7]))
             pass
 
+        hexVal = []
+        for i in range(11):
+            hexVal.append(convert(data[i]))
+
         # Angle Output.
         if (data[1] == b'\x53'):
-            hexVal = []
-            for i in range(11):
-                hexVal.append(convert(data[i]))
-
             ax = ((hexVal[3] << 8) | (hexVal[2] & 0xff)) / 32768 * 180
             ay = ((hexVal[5] << 8) | (hexVal[4] & 0xff)) / 32768 * 180
             az = ((hexVal[7] << 8) | (hexVal[6] & 0xff)) / 32768 * 180
+            # print(round(ax, 3), round(ay, 3), round(az, 3))
+            # print(ax)
 
-            print(round(ax, 3), round(ay, 3), round(az, 3))
+            # at = ((hexVal[9] << 8) | (hexVal[8] & 0xff)) / 100
+            # print(ay)
+
+        elif (data[1] == b'\x51'):
+
+            ax = ((hexVal[3] << 8) | hexVal[2]) / 32768 * 16 * 9.8
+            print(ax)
 
 except KeyboardInterrupt:
     sensor.close()
