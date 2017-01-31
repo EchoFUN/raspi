@@ -12,23 +12,12 @@
 #
 
 import RPi.GPIO as GPIO
-import time
-
 GPIO.setmode(GPIO.BOARD)
-
 GPIO.setup(7, GPIO.OUT)
-GPIO.output(7, False)
 
-p = GPIO.PWM(7, 50)  # 通道为 12 频率为 50Hz
+p = GPIO.PWM(7, 50)
+p.start(5.5)
 
-p.start(5)
-time.sleep(2)
-p.ChangeDutyCycle(10)
-
-try:
-    time.sleep(1000)
-
-except KeyboardInterrupt:
-
-    p.stop()
-    GPIO.cleanup()
+raw_input('Press return to stop !')
+p.stop()
+GPIO.cleanup()
