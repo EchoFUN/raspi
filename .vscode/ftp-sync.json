@@ -1,0 +1,19 @@
+{
+    "remotePath": "/home/pi/workspace/raspi",
+    "host": "192.168.10.103",
+    "username": "pi",
+    "password": "pi",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ]
+}
