@@ -17,20 +17,15 @@ pi = pigpio.pi()
 if not pi.connected:
     exit(0)
 
-SIMPLE_PIN = [21, 20, 16, 12, 26, 19, 13, 6]
-
-for i in range(len(SIMPLE_PIN)):
-
-    curr_pin = SIMPLE_PIN[i]
-
-    pi.set_servo_pulsewidth(curr_pin, 1100)
-    time.sleep(0.5)
-    pi.set_servo_pulsewidth(curr_pin, 1900)
-    time.sleep(0.5)
-    pi.set_servo_pulsewidth(curr_pin, 1500)
+pi.set_servo_pulsewidth(16, 1100)
+pi.set_servo_pulsewidth(21, 1900)
 
 
 try:
+
+    time.sleep(5)
+    pi.set_servo_pulsewidth(16, 1300)
+
 
     time.sleep(1000)
 except KeyboardInterrupt:
