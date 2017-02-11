@@ -16,12 +16,14 @@
 import time
 import pigpio
 
-PIN_CODDE = 12
+# PIN_CODDE = 12
+PIN_CODDE = 4
 
 pi = pigpio.pi()
 if not pi.connected:
     exit(0)
 
-pi.set_servo_pulsewidth(PIN_CODDE, 1500)
+# pi.set_servo_pulsewidth(PIN_CODDE, 1400)
+pi.set_servo_pulsewidth(PIN_CODDE, 1100)
 
 pi.stop()

@@ -33,7 +33,7 @@ DEGREE = {
 
 # Server side address
 SERVER = {
-  'ip': '192.168.199.140',
+  'ip': '192.168.10.102',
 
   'port': '8080'
 }
