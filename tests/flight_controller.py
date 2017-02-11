@@ -23,11 +23,20 @@ for i in range(len(SIMPLE_PIN)):
 
     curr_pin = SIMPLE_PIN[i]
 
-    pi.set_servo_pulsewidth(curr_pin, 1100)
-    time.sleep(0.5)
-    pi.set_servo_pulsewidth(curr_pin, 1900)
-    time.sleep(0.5)
-    pi.set_servo_pulsewidth(curr_pin, 1500)
+    if curr_pin == 16: 
+
+        pi.set_servo_pulsewidth(curr_pin, 1500)
+        time.sleep(0.5)
+        pi.set_servo_pulsewidth(curr_pin, 1000)
+        time.sleep(0.5)
+        pi.set_servo_pulsewidth(curr_pin, 1250)
+    else:
+
+        pi.set_servo_pulsewidth(curr_pin, 1100)
+        time.sleep(0.5)
+        pi.set_servo_pulsewidth(curr_pin, 1900)
+        time.sleep(0.5)
+        pi.set_servo_pulsewidth(curr_pin, 1500)
 
 
 try:
