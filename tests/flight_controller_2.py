@@ -19,10 +19,15 @@ if not pi.connected:
 
 print('connected to the pi ')
 
-pi.set_servo_pulsewidth(12, 1900)
-
+pi.set_servo_pulsewidth(12, 1200)
+time.sleep(3)
+pi.set_servo_pulsewidth(12, 1250)
 time.sleep(3)
 pi.set_servo_pulsewidth(12, 1300)
+time.sleep(3)
+pi.set_servo_pulsewidth(12, 1350)
+time.sleep(3)
+pi.set_servo_pulsewidth(12, 1200)
 
 try:
 
