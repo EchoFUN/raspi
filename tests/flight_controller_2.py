@@ -20,20 +20,14 @@ if not pi.connected:
 print('connected to the pi ')
 
 pi.set_servo_pulsewidth(12, 1900)
-pi.set_servo_pulsewidth(16, 1000)
 
 time.sleep(3)
-pi.set_servo_pulsewidth(12, 1500)
+pi.set_servo_pulsewidth(12, 1300)
 
 try:
-
-    time.sleep(2)
-
-    print('Start The throtte.')
-    pi.set_servo_pulsewidth(16, 1000)
 
     time.sleep(1000)
 except KeyboardInterrupt:
 
-    pi.set_servo_pulsewidth(16, 1000)
+    pi.set_servo_pulsewidth(12, 1000)
     pi.stop()

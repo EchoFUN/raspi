@@ -17,7 +17,18 @@ pi = pigpio.pi()
 if not pi.connected:
     exit(0)
 
-pi.set_servo_pulsewidth(16, 900)
 
-time.sleep(2)
-pi.stop()
+
+
+try:
+
+    time.sleep(2)
+
+    print('Start The throtte.')
+    pi.set_servo_pulsewidth(16, 1100)
+
+    time.sleep(1000)
+except KeyboardInterrupt:
+
+    pi.set_servo_pulsewidth(16, 1000)
+    pi.stop()
