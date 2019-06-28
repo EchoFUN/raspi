@@ -9,16 +9,12 @@
 #
 #
 #
-
-import time
 import pigpio
 import os
 import readchar
 
-from excepts import *
-
 throttle = 1000
-STEP = 100
+STEP = 50
 
 
 def readerEvent():
@@ -28,21 +24,20 @@ def readerEvent():
         token = code[-2]
 
         if len(code) == 3:
+            print(token)
 
             if token == 'w':
-                throttle -= STEP
-
-            elif token == 's':
                 throttle += STEP
 
+            elif token == 's':
+                throttle -= STEP
+
+            print('current throttle is ' + str(throttle))
             pi.set_servo_pulsewidth(12, throttle)
 
 
 def connectPi(url, port):
     pi = pigpio.pi(url, port)
-    if not pi.connected:
-        raise PiConnectError
-
     return pi
 
 
